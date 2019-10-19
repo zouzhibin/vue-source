@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="school.name">
+        <div>{{school.name}}{{a}}</div>
+        <div>{{school.age}}</div>
+        <!-- 如果数据不变化 视图就不会刷新 -->
+        {{getNewName}}
+        <div v-html="message"></div>
+        <ul>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+        <button v-on:click="btn">更新操作</button>
+    </div>
+    <script src="./mvvm.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                a:10,
+                school:{
+                    name:"志兵",
+                    age:10
+                },
+                message:"<h1>欢迎大家</h1>"
+            },
+            computed:{
+                getNewName(){
+                    return this.school.age+'哈哈哈'
+                }
+            },
+            methods:{
+                btn(){
+                    this.school.age = 99999
+                }
+            }
+        })
+    </script>
+</body>
+</html>
